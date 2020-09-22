@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function(){
+    return 'This will be about page';
+})->name('about');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('savedata', 'HomeController@savedata');
+Route::get('/getData','HomeController@getData');
+

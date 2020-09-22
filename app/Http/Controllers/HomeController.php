@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use File;
+use \App\Tweets;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $foto_profil = DB::table('users')->first();
+        return view('home', compact('foto_profil'));
     }
+
+    public function getData()
+    {
+        $t = Tweets::All();
+        return response()->json($t);
+    }
+
 }
